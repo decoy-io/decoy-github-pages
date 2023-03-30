@@ -1,0 +1,29 @@
+{
+  "name": "Decoy",
+  "description": "A Flutter chrome extension",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' ; object-src 'self'"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/Icon-192.png"
+  },
+  "icons": {
+    "192": "icons/Icon-192.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["current-tab.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage"
+  ]
+}
